@@ -4,10 +4,13 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -42,6 +45,12 @@ public class Postagem {
 	//A anotação @UpdateTimestamp pega a data atual do computador assim que alguem faz uma postagem, e armazena essa data no campo destinado (no caso data)
 	private LocalDateTime data;
 
+	@ManyToOne
+	//A anotação @ManyToOne indica que a Classe Postagem será o lado N:1 e terá um Objeto da Classe Tema.
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -73,6 +82,15 @@ public class Postagem {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-	//Getters - são os gets de cada atributo, são responsáveis por pegar a informação do objeto.
-	//Setters - são os sets de cada atributo, são responsáveis por inserir uma informação no objeto.
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+	
+	//Getters - os gets de cada atributo, são responsáveis por pegar a informação do objeto.
+	//Setters - os sets de cada atributo, são responsáveis por inserir uma informação no objeto.
 }
