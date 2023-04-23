@@ -8,9 +8,11 @@ import org.springframework.data.repository.query.Param;
 import com.generation.blogpessoal.model.Postagem;
 
 //Arquivo responsavel por conversar com a tabela POSTAGEM (tb_postagens)do banco de dados
-//O JpaRepository será responsável por conversar com a tabela postagem e devolver uma resposta para o POSTAGEMREPOSITORY.
+
 public interface PostagemRepository extends JpaRepository<Postagem, Long>{
-
+//O JpaRepository será responsável por conversar com a tabela Postagem e devolver uma resposta para o POSTAGEMREPOSITORY.
+//Long é referente ao tipo do ID da taabela POstagem
+	
 	public List<Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo")String titulo);
-
+	
 }
