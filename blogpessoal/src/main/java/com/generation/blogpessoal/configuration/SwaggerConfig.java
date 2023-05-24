@@ -14,26 +14,27 @@ import io.swagger.v3.oas.models.responses.ApiResponses;
 
 @Configuration
 public class SwaggerConfig {
-	
+
 	@Bean
-	OpenAPI springBlogPessoalOpenAPI() {
-		return new OpenAPI()
-				.info(new Info()
-						.title("Projeto Blog Pessoal")
-						.description("Projeto Blog Pessoal - Generation Brasil")
-						.version("v0.0.1")
-						.license(new License()
-								.name("Generation Brasil")
-								.url("https://github.com/RebecaLPereira/BlogPessoal-Generation.git"))
-						.contact(new Contact()
-								.name("Rebeca Leite Pereira")
-								.url("https://www.linkedin.com/in/rebecaleitepereira/")
-								.email("leitepereira.rebeca@gmail.com")))
-					.externalDocs(new ExternalDocumentation()
-							.description("Github")
-							.url("https://github.com/RebecaLPereira"));
-	}
-	
+    OpenAPI springBlogPessoalOpenAPI() {
+        return new OpenAPI()
+            .info(new Info()
+                .title("Projeto Blog Pessoal")
+                .description("Projeto Blog Pessoal - Generation Brasil")
+                .version("v0.0.1")
+                .license(new License()
+                    .name("Generation Brasil")
+                    .url("https://brazil.generation.org/"))
+                .contact(new Contact()
+                    .name("Generation Brasil")
+                    .url("https://github.com/conteudoGeneration")
+                    .email("conteudogeneration@generation.org")))
+            .externalDocs(new ExternalDocumentation()
+                .description("Github")
+                .url("https://github.com/conteudoGeneration/"));
+    }
+
+
 	@Bean
 	public OpenApiCustomizer customerGlobalHeaderOpenApiCustomiser() {
 
@@ -60,5 +61,4 @@ public class SwaggerConfig {
 		return new ApiResponse().description(message);
 
 	}
-
 }
